@@ -21,12 +21,14 @@ export const weekDays = [
           {
             id: 1,
             name: 'Exercise A',
-            info: '50 lb x 5, 60 lb x 5, 70 l...'
+            info: '50 lb x 5, 60 lb x 5, 70 l...',
+            intensity: '3x'
           },
           {
             id: 2,
             name: 'Exercise B',
-            info: '50 lb x 5'
+            info: '50 lb x 5',
+            intensity: '1x'
           }
         ]
       }

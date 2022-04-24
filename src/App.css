@@ -77,6 +77,11 @@
   color: #728096;
 }
 
+.day-number-active {
+  font-weight: 700;
+  color: #5A57CB;
+}
+
 /* Workout Item */
 .workout-wrapper {
   background: rgba(255, 255, 255, 0.8);
