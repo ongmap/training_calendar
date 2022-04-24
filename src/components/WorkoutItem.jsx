@@ -2,11 +2,10 @@ import ExercisesList from './ExercisesList';
 import { useDrag } from 'react-dnd';
 
 const WorkoutItem = (props) => {
-
   const [collected, drag, dragPreview] = useDrag(() => ({
     type: 'workout',
-    item: { id: props.workout.id}
-  }))
+    item: { id: props.workout.id }
+  }));
 
   return collected.isDragging ? (
     <div ref={dragPreview} />
