@@ -1,7 +1,9 @@
-import './App.css';
-// import { DndProvider } from 'react-dnd';
-// import { HTML5Backend } from 'react-dnd-html5-backend';
+import React from 'react';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+
 import WeekDaysList from './components/WeekDaysList';
+import './App.css';
 
 export const weekDays = [
   {
@@ -29,6 +31,24 @@ export const weekDays = [
             name: 'Exercise B',
             info: '50 lb x 5',
             intensity: '1x'
+          }
+        ]
+      },
+      {
+        id: 2,
+        name: 'Workout 2',
+        exercises: [
+          {
+            id: 1,
+            name: 'Exercise C',
+            info: '50 lb',
+            intensity: '1x'
+          },
+          {
+            id: 2,
+            name: 'Exercise D',
+            info: '50 lb x 5, 60 lb x 5',
+            intensity: '2x'
           }
         ]
       }
@@ -62,13 +82,26 @@ export const weekDays = [
   }
 ];
 
-function App() {
-  console.log('weekDays ', weekDays);
-  return (
-    <div className="App">
-      <WeekDaysList weekDays={weekDays} />
-    </div>
-  );
+class App extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      weekDays: weekDays
+    }
+  }
+
+  render() {
+    const { weekDays } = this.state;
+
+    return (
+      <DndProvider backend={HTML5Backend}>
+        <div className="App">
+          <WeekDaysList weekDays={weekDays} />
+        </div>
+      </DndProvider>
+    );
+  }
 }
 
 export default App;
