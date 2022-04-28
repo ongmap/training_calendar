@@ -51,6 +51,10 @@
   text-align: 'left';
 }
 
+.day-active {
+  background-color: #61dafb;
+}
+
 .day-header {
   text-align: 'left';
   font-weight: 600;

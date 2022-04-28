@@ -1,11 +1,19 @@
-import ExercisesList from './ExercisesList';
+import ExerciseItem from './Exercise';
 import { useDrag } from 'react-dnd';
 
 const WorkoutItem = (props) => {
   const [collected, drag, dragPreview] = useDrag(() => ({
     type: 'workout',
-    item: { id: props.workout.id }
+    item: props.workout,
+    end: (item, monitor) => {
+      const dropResult = monitor.getDropResult()
+      if (item && dropResult) {
+        props.updateListWorkouts(item, dropResult.dayId);
+      }
+    },
   }));
+
+  const listExercises = props.workout.exercises && props.workout.exercises.map((item) => <ExerciseItem key={item.id} exercise={item} />);
 
   return collected.isDragging ? (
     <div ref={dragPreview} />
@@ -14,7 +22,7 @@ const WorkoutItem = (props) => {
       <div className="workout-wrapper">
         <div className="workout-header">{props.workout.name}</div>
         <div className="workout-body">
-          <ExercisesList exercises={props.workout.exercises} />
+          {listExercises}
         </div>
       </div>
     </div>
